@@ -20,38 +20,51 @@ const Hero = () => {
 
       setTime({ hours, minutes, ampm });
       setShowColon(prev => !prev);
-    }, 500); // Adjust speed as needed
+    }, 500);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className='max-w-2xl flex flex-col gap-5 justify-center items-center text-black mt-30'>
-      <Link href="/docs" className='rounded-2xl text-[13px] font-semibold bg-gray-200/60 flex gap-3 items-center px-2 py-1'>
-        <span className='tracking-wide'>QSBS just got better in July 2025</span> <FaArrowRight />
+    <div className='w-full max-w-4xl mx-auto px-4 py-10 flex flex-col gap-6 justify-center items-center text-black text-center'>
+      <Link
+        href="/docs"
+        className='rounded-2xl text-xs sm:text-sm font-semibold bg-gray-200/60 flex gap-2 sm:gap-3 items-center px-3 py-1.5'
+      >
+        <span className='tracking-wide'>QSBS just got better in July 2025</span>
+        <FaArrowRight />
       </Link>
-      <h1 className='text-5xl px-15 font-semibold text-pretty text-center'>
-        Magically simplify accounting and taxes
+
+      <h1 className='text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight'>
+        <span className='whitespace-nowrap'>Magically Simplify</span><br />
+        accounting and taxes
       </h1>
-     <div className='flex flex-col items-center text-lg'> 
-         <p className='text-black/70 '>
-        Automated bookkeeping, effortless tax filing, real‑time insights.
-      </p>
-      <p className='text-black/70'>
-        Set up in 10 mins. Back to building by{' '}
-        {time.hours}
-        <span className={`inline-block transition-opacity duration-200 ${showColon ? 'opacity-100' : 'opacity-0'}`}>
-          :
-        </span>
-        {time.minutes}
-        {time.ampm}.
-      </p>
-     </div>
-        <div className='flex space-x-4'> 
-            <button className='bg-blue-500 cursor-pointer hover:bg-blue-700 font-semibold text-white px-3 py-2 rounded-xl text-shadow-md shadow-md '>Start Free Trial </button>
-             <button className='bg-transparent cursor-pointer hover:bg-indigo-50/50 text-black/90 font-semibold  px-3 py-2 rounded-lg  flex items-center gap-2 '>Pricing <FaArrowRight className='opacity-40 size-3'/> </button> 
-             
-        </div>
+
+      <div className='flex flex-col gap-1 text-base sm:text-lg text-black/70'>
+        <p>Automated bookkeeping, effortless tax filing, real‑time insights.</p>
+        <p>
+          Set up in 10 mins. Back to building by{' '}
+          {time.hours}
+          <span
+            className={`inline-block transition-opacity duration-200 ${
+              showColon ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            :
+          </span>
+          {time.minutes}
+          {time.ampm}.
+        </p>
+      </div>
+
+      <div className='flex flex-col sm:flex-row gap-3 mt-4'>
+        <button className='bg-blue-500 hover:bg-blue-700 font-semibold text-white px-5 py-2.5 rounded-xl shadow-md text-sm sm:text-base'>
+          Start Free Trial
+        </button>
+        <button className='bg-transparent hover:bg-black/8 text-black/90 font-semibold px-5 py-2.5 rounded-lg flex items-center gap-2 text-sm sm:text-base'>
+          Pricing <FaArrowRight className='opacity-40 size-3' />
+        </button>
+      </div>
     </div>
   );
 };
