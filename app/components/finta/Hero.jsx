@@ -33,7 +33,7 @@ const Hero = () => {
       <h1 className='text-5xl px-15 font-semibold text-pretty text-center'>
         Magically simplify accounting and taxes
       </h1>
-     <div className='flex flex-col items-center'> 
+     <div className='flex flex-col items-center text-lg'> 
          <p className='text-black/70 '>
         Automated bookkeeping, effortless tax filing, real‑time insights.
       </p>
