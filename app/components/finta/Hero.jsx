@@ -1,5 +1,4 @@
-'use client';
-import {motion} from  "motion/react"
+import { motion } from "motion/react";
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
@@ -9,7 +8,7 @@ const Hero = () => {
   const [showColon, setShowColon] = useState(true);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const updateTime = () => {
       const now = new Date();
       const future = new Date(now.getTime() + 10 * 60000);
       let hours = future.getHours();
@@ -18,43 +17,54 @@ const Hero = () => {
       hours = hours % 12 || 12;
       minutes = minutes < 10 ? '0' + minutes : minutes;
 
-      setTime({ hours, minutes, ampm });
-      setShowColon(prev => !prev);
-    }, 500);
+      setTime({ hours: String(hours), minutes: String(minutes), ampm });
+    };
 
-    return () => clearInterval(interval);
+    updateTime(); // Set time immediately on mount
+
+    const timeInterval = setInterval(updateTime, 1000); // Update every second
+
+    return () => clearInterval(timeInterval);
+  }, []);
+
+  useEffect(() => {
+    const blinkInterval = setInterval(() => {
+      setShowColon(prev => !prev);
+    }, 500); // Blink colon every half second
+
+    return () => clearInterval(blinkInterval);
   }, []);
 
   return (
-    <div className='w-full max-w-4xl mx-auto px-4 py-10 flex flex-col gap-6 justify-center items-center text-black text-center'>
-      <Link
-        href="/docs"
-        className='rounded-2xl text-xs sm:text-sm font-semibold bg-gray-200/60 flex gap-2 sm:gap-3 items-center px-3 py-1.5'
-      >
-        <motion.span 
-        initial={{y:30,opacity:0}}
-        animate={{y:0,opacity:1}}
-        transition={{duration:0.6,ease:"easeInOut"}}
-        className='tracking-wide'>
-          QSBS just got better in July 2025
-          </motion.span>
-        <FaArrowRight />
-      </Link>
+    <div className='w-full max-w-4xl mx-auto my-10 px-4 py-10 flex flex-col gap-3 justify-center items-center text-black text-center'>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        <Link
+          href="/docs"
+          className='rounded-2xl text-xs sm:text-sm font-semibold bg-gray-200/60 flex gap-2 sm:gap-3 items-center px-3 py-1.5 mb-5'
+        >
+          <span className='tracking-wide text-xs'>
+            QSBS just got better in July 2025
+          </span>
+          <FaArrowRight />
+        </Link>
+      </motion.div>
 
-      <motion.h1 
-      initial={{opacity:0,y:30}}
-      animate={{opacity:1,y:0}}
-      transition={{duration:0.6,delay:0.3,ease:"easeOut"}}
-      className='text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight'>
+      <motion.h1
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+        className='text-3xl font-semibold sm:text-4xl md:text-5xl leading-tight'
+      >
         <span className='whitespace-nowrap'>Magically Simplify</span><br />
         accounting and taxes
       </motion.h1>
 
       <motion.div
-      initial={{opacity:0}}
-      animate={{opacity:1}}
-      transition={{duration:0.6,delay:0.3}}
-      className='flex flex-col gap-1 text-base sm:text-lg text-black/70'>
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className='flex flex-col gap-1 text-base sm:text-lg text-black/70'
+      >
         <p>Automated bookkeeping, effortless tax filing, real‑time insights.</p>
         <p>
           Set up in 10 mins. Back to building by{' '}
@@ -75,7 +85,7 @@ const Hero = () => {
         <button className='bg-blue-500 hover:bg-blue-700 font-semibold text-white px-5 py-2.5 rounded-xl shadow-md text-sm sm:text-base'>
           Start Free Trial
         </button>
-        <button className='bg-transparent hover:bg-black/8 text-black/90 font-semibold px-5 py-2.5 rounded-lg flex items-center gap-2 text-sm sm:text-base'>
+        <button className='bg-transparent cursor-pointer hover:bg-black/8 text-black/90 font-semibold px-5 py-2.5 rounded-lg flex items-center gap-2 text-sm sm:text-base'>
           Pricing <FaArrowRight className='opacity-40 size-3' />
         </button>
       </div>
