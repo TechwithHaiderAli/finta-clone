@@ -1,5 +1,5 @@
 'use client';
-
+import {motion} from  "motion/react"
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
@@ -31,16 +31,30 @@ const Hero = () => {
         href="/docs"
         className='rounded-2xl text-xs sm:text-sm font-semibold bg-gray-200/60 flex gap-2 sm:gap-3 items-center px-3 py-1.5'
       >
-        <span className='tracking-wide'>QSBS just got better in July 2025</span>
+        <motion.span 
+        initial={{y:30,opacity:0}}
+        animate={{y:0,opacity:1}}
+        transition={{duration:0.6,ease:"easeInOut"}}
+        className='tracking-wide'>
+          QSBS just got better in July 2025
+          </motion.span>
         <FaArrowRight />
       </Link>
 
-      <h1 className='text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight'>
+      <motion.h1 
+      initial={{opacity:0,y:30}}
+      animate={{opacity:1,y:0}}
+      transition={{duration:0.6,delay:0.3,ease:"easeOut"}}
+      className='text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight'>
         <span className='whitespace-nowrap'>Magically Simplify</span><br />
         accounting and taxes
-      </h1>
+      </motion.h1>
 
-      <div className='flex flex-col gap-1 text-base sm:text-lg text-black/70'>
+      <motion.div
+      initial={{opacity:0}}
+      animate={{opacity:1}}
+      transition={{duration:0.6,delay:0.3}}
+      className='flex flex-col gap-1 text-base sm:text-lg text-black/70'>
         <p>Automated bookkeeping, effortless tax filing, real‑time insights.</p>
         <p>
           Set up in 10 mins. Back to building by{' '}
@@ -55,7 +69,7 @@ const Hero = () => {
           {time.minutes}
           {time.ampm}.
         </p>
-      </div>
+      </motion.div>
 
       <div className='flex flex-col sm:flex-row gap-3 mt-4'>
         <button className='bg-blue-500 hover:bg-blue-700 font-semibold text-white px-5 py-2.5 rounded-xl shadow-md text-sm sm:text-base'>
