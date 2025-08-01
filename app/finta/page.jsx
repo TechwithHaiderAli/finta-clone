@@ -8,8 +8,7 @@ import MarqueeContainer from '../components/finta/MarqueeContainer';
 import FreeTime from '../components/finta/free-time';
 import FeatureOne from '../components/finta/FeatureOne';
 import Testimonial from '../components/finta/Testimonial';
-import { FaTextHeight } from 'react-icons/fa';
-import TaxHeader from '../components/TextHeader';
+import TaxHeader from '../components/finta/TextHeader';
 
 const FintaPage = () => {
   return (
