@@ -82,7 +82,7 @@ const Hero = () => {
       </motion.div>
 
       <div className='flex flex-col sm:flex-row gap-3 mt-4'>
-        <button className='bg-blue-500 hover:bg-blue-700 font-semibold text-white px-5 py-2.5 rounded-xl shadow-md text-sm sm:text-base'>
+        <button className='bg-blue-500 hover:bg-blue-700 font-semibold cursor-pointer text-white px-5 py-2.5 rounded-xl shadow-md text-sm sm:text-base'>
           Start Free Trial
         </button>
         <button className='bg-transparent cursor-pointer hover:bg-black/8 text-black/90 font-semibold px-5 py-2.5 rounded-lg flex items-center gap-2 text-sm sm:text-base'>

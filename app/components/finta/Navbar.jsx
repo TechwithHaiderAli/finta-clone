@@ -59,7 +59,7 @@ const Navbar = () => {
             </Link>
           ))}
           <button
-            className='bg-blue-500 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-xl shadow-md text-sm w-full text-center'
+            className='bg-blue-500 hover:bg-blue-700 text-white font-semibold cursor-pointer px-4 py-2 rounded-xl shadow-md text-sm w-full text-center'
             onClick={() => setMenuOpen(false)}
           >
             Start Free Trial
